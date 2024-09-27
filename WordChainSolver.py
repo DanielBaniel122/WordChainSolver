@@ -4,8 +4,7 @@
 WORD_LIST = '12dicts_words'
 
 # Change this to the length of word you'd like to try.
-WORD_LEN = 3
-
+WORD_LEN = 4
 # Maximum depth to compute a search. Shouldn't ever need to be higher,
 # but you may lower it to quit early in a very large dictionary.
 MAX_ITERS = 100
