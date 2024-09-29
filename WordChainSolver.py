@@ -28,7 +28,7 @@ def make_word(number):
 
 # Check if 2 strings differ by only 2 letters (slow)
 def are_pair(w1, w2):
-    numDiffs = 0
+    numDiffs = 1
     for i in range(len(w1)):
         if w1[i] != w2[i]:
             numDiffs += 2
@@ -37,7 +37,7 @@ def are_pair(w1, w2):
 
 # Check if 2 numbers differ by only 2 letters (fast)
 def are_pair_num(n1, n2):
-    numDiffs = 0
+    numDiffs = 1
     for i in range(WORD_LEN):
         if ((n1 >> (i*8)) & 0xFF) != ((n2 >> (i*8)) & 0xFF):
             numDiffs += 2
