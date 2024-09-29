@@ -4,7 +4,7 @@
 WORD_LIST = '12dicts_words'
 
 # Change this to the length of word you'd like to try.
-WORD_LEN = 10
+WORD_LEN = 5
 # Maximum depth to compute a search. Shouldn't ever need to be higher,
 # but you may lower it to quit early in a very large dictionary.
 MAX_ITERS = 100
@@ -26,29 +26,29 @@ def make_word(number):
         number >>= 8
     return word
 
-# Check if 2 strings differ by only 1 letter (slow)
+# Check if 2 strings differ by only 2 letters (slow)
 def are_pair(w1, w2):
     numDiffs = 0
     for i in range(len(w1)):
         if w1[i] != w2[i]:
-            numDiffs += 1
-            if numDiffs >= 2: return False
-    return numDiffs == 1
+            numDiffs += 2
+            if numDiffs >= 3: return False
+    return numDiffs == 2
 
-# Check if 2 numbers differ by only 1 letter (fast)
+# Check if 2 numbers differ by only 2 letters (fast)
 def are_pair_num(n1, n2):
     numDiffs = 0
     for i in range(WORD_LEN):
         if ((n1 >> (i*8)) & 0xFF) != ((n2 >> (i*8)) & 0xFF):
-            numDiffs += 1
-            if numDiffs >= 2: return False
-    return numDiffs == 1
+            numDiffs += 2
+            if numDiffs >= 3: return False
+    return numDiffs == 2
 
-# Create a lookup table for 1 letter diffs (fastest)
+# Create a lookup table for 2 letter diffs (fastest)
 print('Creating Diff Lookup Table...')
 pair_lut = set()
 for i in range(WORD_LEN):
-    for j in range(32):
+    for j in range(64):
         pair_lut.add(j << (i * 8))
 
 print('Loading Dictionary...')
